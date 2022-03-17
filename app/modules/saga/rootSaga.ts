@@ -1,7 +1,7 @@
 import { all, spawn } from 'redux-saga/effects';
 import { watchUserPost } from './weather';
 
-export default function* rootSaga() {
+export function* rootSaga() {
     try {
         yield all([
             spawn(watchUserPost),

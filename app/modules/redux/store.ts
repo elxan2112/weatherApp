@@ -1,9 +1,9 @@
 import { compose, createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
-import combineReducer from './combineReducer';
+import { combineReducer } from './';
 import { persistStore, persistReducer } from 'redux-persist';
-import rootSaga from '../saga/rootSaga';
+import { rootSaga } from '../saga';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const sagaMiddleware = createSagaMiddleware();

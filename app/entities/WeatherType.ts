@@ -1,4 +1,4 @@
-export interface IWeather {
+export type WeatherType = {
     air_pressure: number;
     applicable_date: string;
     created: string;

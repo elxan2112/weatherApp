@@ -1,5 +1,5 @@
-import { IWeatherUpdate } from "../modules/redux/weather/reducer";
+import { WeatherUpdateType } from "../modules/redux/weather";
 
 export interface IRootState {
-    WeatherUpdate: IWeatherUpdate;
+    WeatherUpdate: WeatherUpdateType;
 };

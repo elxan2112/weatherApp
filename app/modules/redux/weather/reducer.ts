@@ -1,19 +1,19 @@
-import { ReduxActionTypes } from "../ReduxActionTypes";
-import { IWeather } from "../../../entities/IWeather";
+import { ReduxActionTypes } from "../";
+import { WeatherType } from "../../../entities/WeatherType";
 
-export interface IWeatherUpdate {
-    weather: Array<IWeather>
-    weatherByDate: IWeather;
+export type WeatherUpdateType = {
+    weather: Array<WeatherType>
+    weatherByDate: WeatherType;
     isActivityIndicatorActive: boolean;
 };
 
-const initState: IWeatherUpdate = {
+const initState: WeatherUpdateType = {
     weather: [],
-    weatherByDate: {} as IWeather,
+    weatherByDate: {} as WeatherType,
     isActivityIndicatorActive: true,
 };
 
-export const WeatherUpdate = (state: IWeatherUpdate = initState, action: { type: string, payload: any }): IWeatherUpdate => {
+export const WeatherUpdate = (state: WeatherUpdateType = initState, action: { type: string, payload: any }): WeatherUpdateType => {
     const { type, payload } = action;
     switch (type) {
         case ReduxActionTypes.SET_WEATHER:

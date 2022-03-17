@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export const getStyle = () => {
+export const getStyle = (temp, minTemp, maxTemp) => {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -25,7 +25,25 @@ export const getStyle = () => {
             color: "#000",
             lineHeight: 24,
             marginBottom: 5,
-        }
+        },
+        tempText: {
+            fontSize: 20,
+            lineHeight: 24,
+            marginBottom: 5,
+            color: temp >= 0 ? '#f70000' : '#85c9e8'
+        },
+        minTempText: {
+            fontSize: 20,
+            lineHeight: 24,
+            marginBottom: 5,
+            color: minTemp >= 0 ? '#f70000' : '#85c9e8'
+        },
+        maxTempText: {
+            fontSize: 20,
+            lineHeight: 24,
+            marginBottom: 5,
+            color: maxTemp >= 0 ? '#f70000' : '#85c9e8'
+        },
     });
     return styles;
 };

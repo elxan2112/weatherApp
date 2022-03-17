@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { SagaActionTypes } from '../SagaActionTypes';
 import { AxiosRequester } from '../../../services/requester';
-import { setActivityIndicator, setWeather, setWeatherByDate } from '../../redux/weather/actions';
+import { setActivityIndicator, setWeather, setWeatherByDate } from '../../redux/weather';
 import { setNavigate } from '../../navigation/rootNavigation';
 
 const requester = new AxiosRequester();

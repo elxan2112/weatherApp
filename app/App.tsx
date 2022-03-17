@@ -1,9 +1,9 @@
 import 'react-native-gesture-handler';
 import React, { FC } from 'react';
 import { SafeAreaView } from 'react-native';
-import { RootNavigation } from './modules/navigation/rootNavigation';
+import { RootNavigation } from './modules/navigation';
 import { PersistGate } from 'redux-persist/integration/react';
-import { persisStore, store } from './modules/redux/store';
+import { persisStore, store } from './modules/redux';
 import { Provider } from 'react-redux';
 
 const App: FC = () => {

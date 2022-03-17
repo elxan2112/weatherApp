@@ -1,4 +1,4 @@
-import { ReduxActionTypes } from "../ReduxActionTypes";
+import { ReduxActionTypes } from "../";
 
 export const setWeather = (payload: any) => {
     return { type: ReduxActionTypes.SET_WEATHER, payload };

@@ -1,10 +1,11 @@
 import React, { FC, useCallback, useEffect, useMemo } from 'react';
 import { ActivityIndicator, FlatList, View } from 'react-native';
-import { selectIsActivityIndicatorActive, selectWeathersList } from '../../modules/redux/weather/selectors';
+import { selectIsActivityIndicatorActive, selectWeathersList } from '../../modules/redux/weather';
 import { checkWeather, getWeatherByDate } from '../../modules/saga/weather/actions';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { IStackNavigation } from '../../entities/IStackNavigation';
 import CalendarPicker from 'react-native-calendar-picker';
+import { WeatherType } from '../../entities/WeatherType';
 import { WeatherInfo } from './weatherInfo';
 import { getStyle } from './styles';
 
@@ -18,8 +19,8 @@ export const AllWeathersView: FC<Props> = ({ navigation }) => {
     useEffect(() => {
         dispatch(checkWeather())
     }, [])
-    const weathersList = useSelector(selectWeathersList, shallowEqual) as any;
-    const isActivityIndicatorActive = useSelector(selectIsActivityIndicatorActive, shallowEqual) as any;
+    const weathersList = useSelector(selectWeathersList, shallowEqual) as Array<WeatherType>;
+    const isActivityIndicatorActive = useSelector(selectIsActivityIndicatorActive, shallowEqual) as boolean;
 
     const renderItem = useCallback(({ item }) => (
         <WeatherInfo {...{ item, navigation }} />
@@ -28,7 +29,7 @@ export const AllWeathersView: FC<Props> = ({ navigation }) => {
     return (
         <View style={styles.container}>
             {isActivityIndicatorActive
-                ? <View style={styles.indicatorContainer}><ActivityIndicator size={'large'} color={'#FFF'}/></View>
+                ? <View style={styles.indicatorContainer}><ActivityIndicator size={'large'} color={'#ee65e7'}/></View>
                 : <></>}
             <View style={styles.calendarContainer}>
                 <CalendarPicker

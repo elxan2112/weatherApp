@@ -1,4 +1,4 @@
-import { SagaActionTypes } from "../SagaActionTypes";
+import { SagaActionTypes } from "../";
 
 export const checkWeather = () => {
     return { type: SagaActionTypes.CHECK_WEATHER };
