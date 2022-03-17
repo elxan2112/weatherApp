@@ -1,0 +1,4 @@
+export const SagaActionTypes = {
+    CHECK_WEATHER: 'CHECK_WEATHER',
+    CHECK_WEATHER_BY_DATE: 'CHECK_WEATHER_BY_DATE'
+};
