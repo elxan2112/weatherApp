@@ -1,17 +1,19 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { SagaActionTypes } from '../SagaActionTypes';
 import { AxiosRequester } from '../../../services/requester';
-import { setWeather, setWeatherByDate } from '../../redux/weather/actions';
+import { setActivityIndicator, setWeather, setWeatherByDate } from '../../redux/weather/actions';
 import { setNavigate } from '../../navigation/rootNavigation';
 
 const requester = new AxiosRequester();
 
 export function* workerCheckWeather() {
     try {
+        yield put(setActivityIndicator(true))
         const cityWoeid = yield call(getCityWoeid);
         const urlForWeather = `https://www.metaweather.com/api/location/${cityWoeid}`;
         const getWeatherResponse = yield call(requester.get, urlForWeather);
         yield put(setWeather(getWeatherResponse.data.consolidated_weather));
+        yield put(setActivityIndicator(false))
     } catch (error) {
         console.error(error);
     };
@@ -19,6 +21,7 @@ export function* workerCheckWeather() {
 
 export function* workerCheckWeatherByDate({ payload }: { payload: moment.Moment }) {
     try {
+        yield put(setActivityIndicator(true))
         const cityWoeid = yield call(getCityWoeid);
         //@ts-ignore
         let date = new Date(payload);
@@ -27,10 +30,11 @@ export function* workerCheckWeatherByDate({ payload }: { payload: moment.Moment 
         const day = date.getDate();
         const url = `https://www.metaweather.com/api/location/${cityWoeid}/${year}/${month}/${day}`;
         const response = yield call(requester.get, url);
-        if(response.data){
+        if (response.data) {
             yield put(setWeatherByDate(response.data[0]));
-            setNavigate('WeatherView', {item: null})
+            setNavigate('WeatherView', { item: null })
         }
+        yield put(setActivityIndicator(false))
     } catch (error) {
         console.error(error);
     };

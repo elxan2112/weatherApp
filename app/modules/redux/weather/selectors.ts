@@ -7,3 +7,7 @@ export const selectWeathersList = (state: IRootState) => {
 export const selectWeatherByDate = (state: IRootState) => {
     return state.WeatherUpdate.weatherByDate;
 };
+
+export const selectIsActivityIndicatorActive = (state: IRootState) => {
+    return state.WeatherUpdate.isActivityIndicatorActive;
+};
